@@ -3,26 +3,30 @@
 
  ✨ Özellikler:
 
-*Öğrenci bilgilerini listeleme, ekleme, güncelleme ve silme
+✅ Öğrenci oluşturma, listeleme, güncelleme ve silme (CRUD)
 
-*Swagger UI ile API uç noktalarının test edilmesi
+✅ RESTful API mimarisi
 
-*CORS desteği ile frontend bağlantısı
+✅ Swagger UI ile test edilebilirlik
 
-*Sahte veri oluşturma (Bogus kütüphanesi ile)
+✅ SQL Server ile veritabanı bağlantısı
 
-*Modern ve modüler mimari
+✅ Sahte veri üretimi (Bogus kütüphanesi ile)
 
-🛠️ Teknolojiler:
+✅ CORS desteği ile frontend uyumluluğu
 
-*ASP.NET Core 7/8
+🔧 Kullanılan Teknolojiler
 
-*Entity Framework Core
+✅ ASP.NET Core 7/8
 
-*SQL Server
+✅ Entity Framework Core
 
-*Swagger (Swashbuckle)
+✅ SQL Server
 
-*Bogus (Fake data generation)
+✅ Swagger (Swashbuckle.AspNetCore)
+
+✅ Bogus (Fake data generation)
+
+✅ JavaScript, HTML, Bootstrap (Opsiyonel frontend)
 
 

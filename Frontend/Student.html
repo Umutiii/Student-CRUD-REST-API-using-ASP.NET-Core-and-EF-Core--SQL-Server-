@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-4">
+        <!--Register Button-->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#registerStudentModal">
+            Register Student
+        </button>
+        <!--Student Table-->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Student Number</th>
+                    <th scope="col">Firstname</th>
+                    <th scope="col">Lastname</th>
+                    <th scope="col">Class</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody id="studentList">
+            </tbody>
+        </table>
+    </div>
+
+
+
+    <!--Register Modal-->
+    <div class="modal fade" id="registerStudentModal" tabindex="-1" aria-labelledby="registerStudentModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="registerStudentModalLabel">Register New Student</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="studentForm" novalidate>
+                        <input hidden type="number" name="id" value="0" />
+                        <div class="mb-3">
+                            <label for="studentNumber" class="form-label">Student Number</label>
+                            <input type="number" class="form-control" id="studentNumber" name="no" min="1" required>
+                            <div class="invalid-feedback">
+                                Student number must be 1 or greater.
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="firstName" class="form-label">First Name</label>
+                            <input type="text" class="form-control" id="firstName" name="firstName" required minlength="2" maxlength="20">
+                            <div class="invalid-feedback">
+                                First name is required and must be between 2 and 20 characters.
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="lastName" class="form-label">Last Name</label>
+                            <input type="text" class="form-control" id="lastName" name="lastName" required minlength="2" maxlength="20">
+                            <div class="invalid-feedback">
+                                Last name is required and must be between 2 and 20 characters.
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="class" class="form-label">Class</label>
+                            <input type="text" class="form-control" id="class" name="class" required>
+                            <div class="invalid-feedback">
+                                Class is required.
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Update Student Modal -->
+    <div class="modal fade" id="updateStudentModal" tabindex="-1" aria-labelledby="updateStudentModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="updateStudentModalLabel">Update Student</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="updateStudentForm" novalidate>
+                        <input hidden type="number" name="id" id="updateStudentId" />
+                        <div class="mb-3">
+                            <label for="updateStudentNumber" class="form-label">Student Number</label>
+                            <input type="number" class="form-control" id="updateStudentNumber" name="no" min="1" required>
+                            <div class="invalid-feedback">
+                                Student number must be 1 or greater.
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="updateFirstName" class="form-label">First Name</label>
+                            <input type="text" class="form-control" id="updateFirstName" name="firstName" required minlength="2" maxlength="20">
+                            <div class="invalid-feedback">
+                                First name is required and must be between 2 and 20 characters.
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="updateLastName" class="form-label">Last Name</label>
+                            <input type="text" class="form-control" id="updateLastName" name="lastName" required minlength="2" maxlength="20">
+                            <div class="invalid-feedback">
+                                Last name is required and must be between 2 and 20 characters.
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="updateClass" class="form-label">Class</label>
+                            <input type="text" class="form-control" id="updateClass" name="class" required>
+                            <div class="invalid-feedback">
+                                Class is required.
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-warning">Update</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteConfirmationModalLabel">Confirm Deletion</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete this student?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-danger" id="confirmDeleteButton">Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="Student.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.min.js" integrity="sha384-VQqxDN0EQCkWoxt/0vsQvZswzTHUVOImccYmSyhJTp7kGtPed0Qcx8rK9h9YEgx+" crossorigin="anonymous"></script>
+</body>
+</html>
